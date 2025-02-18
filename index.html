@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Game Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-500 p-4 text-center">
+        <h1 class="text-white text-2xl font-bold">Online Game Hub</h1>
+    </nav>
+
+    <!-- Game Selection Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-8">Play Your Favorite Games</h2>
+            <div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-8">
+                <label for="gameURL" class="block text-gray-700 font-bold mb-2">Enter Game URL</label>
+                <input type="text" id="gameURL" class="w-full p-3 border rounded-lg mb-4" placeholder="Enter game link">
+                
+                <button onclick="loadGame()" class="w-full px-4 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600">
+                    Play Game
+                </button>
+            </div>
+            <div id="gameContainer" class="mt-8 max-w-lg mx-auto bg-white shadow-lg p-6 rounded-lg hidden">
+                <h3 class="text-xl font-bold">Game Window</h3>
+                <iframe id="gameFrame" class="w-full mt-4" height="400" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function loadGame() {
+            const url = document.getElementById('gameURL').value.trim();
+            
+            if (!url) {
+                alert('Please enter a valid game URL.');
+                return;
+            }
+            
+            document.getElementById('gameFrame').src = url;
+            document.getElementById('gameContainer').classList.remove('hidden');
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-blue-500 text-white text-center py-4">
+        <p>&copy; 2025 Online Game Hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>
